@@ -20,10 +20,12 @@ public class PlayerController : MonoBehaviour {
 	public float fireRate;
 
 	private Rigidbody rb;
+	private AudioSource shotAudio;
 	private float nextFire = 0.0f;
 
 	void Start() {
 		rb = GetComponent<Rigidbody> ();
+		shotAudio = GetComponent<AudioSource> ();
 	}
 
 	void Update() {
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 				shot, 
 				shotSpawn.position,
 				Quaternion.Euler(shotSpawn.rotation.x, shotSpawn.rotation.y, shotSpawn.rotation.z));
+			shotAudio.Play ();
 		}
 	}
 
