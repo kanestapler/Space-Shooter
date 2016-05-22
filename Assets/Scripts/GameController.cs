@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject hazard;
+	public GameObject[] hazards;
 	public Vector3 spawnPosition;
 	public int spawnsInWave;
 	public float spawnWait;
@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour {
 		while (true) {
 			yield return new WaitForSeconds (startWait);
 			for (int i = 0; i < spawnsInWave; i++) {
+				GameObject hazard = hazards[Random.Range (0, hazards.Length)];
 				Instantiate (
 					hazard,
 					new Vector3 (Random.Range (-spawnPosition.x, spawnPosition.x), spawnPosition.y, spawnPosition.z),
